@@ -31,7 +31,7 @@ class Library:
 
     def create_user(self, username, password, user_type):
         i = 0
-        with open("library_example/users.txt", "r") as file:
+        with open("users.txt", "r") as file:
             users = []
             for user in file.readlines():
                 users.append(user.strip("\n").split(":"))
@@ -58,7 +58,7 @@ class Library:
         pass
 
     def list_books(self):
-        with open("library_example/books.txt", "r") as file:
+        with open("books.txt", "r") as file:
             books = []
             for book in file.readlines():
                 books.append(book.strip("\n").split(":"))
@@ -68,7 +68,7 @@ class Library:
             )
 
     def list_users(self):
-        with open("library_example/users.txt", "r") as file:
+        with open("users.txt", "r") as file:
             for line in file.readlines():
                 print(line.strip("\n"))
 
@@ -77,7 +77,7 @@ class Library:
 
 
 def get_users(username, password):
-    with open("library_example/users.txt", "r") as file:
+    with open("users.txt", "r") as file:
         users = []
         for user in file.readlines():
             users.append(user.strip("\n").split(":"))

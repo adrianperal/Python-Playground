@@ -6,18 +6,18 @@ class Book:
         self.pub_year = pub_year
         self.n_copies = n_copies
         
-        with open('library_example/id_counter.txt', 'r') as file:
+        with open('id_counter.txt', 'r') as file:
             counter = []
             for id in file.readlines():
                 counter.append(id.strip("\n").split(":"))
             book_id = int(counter[0][3]) + 1
-        with open('library_example/books.txt', 'a') as file, open('library_example/id_counter.txt', 'w') as file2:
+        with open('books.txt', 'a') as file, open('id_counter.txt', 'w') as file2:
             file2.write(f"user_id:{counter[0][1]}:book_id:{book_id}")
             file.write(f"{book_id}:{self.title}:{self.author}:{self.pub_year}:{self.n_copies}\n")
     
     def borrow_book(self):
         book_exists = 0
-        with open('library_example/books.txt', 'r') as file:
+        with open('books.txt', 'r') as file:
             book_list = []
             for book in file.readlines():
                 book_list.append(book.strip("\n").split(":"))
@@ -36,7 +36,7 @@ class Book:
                 else:
                     print("Book out of stock.")
         if book_exists == 1:
-            with open('library_example/books.txt', 'w') as file:
+            with open('books.txt', 'w') as file:
                 for book in book_list:
                     file.write(f"{book[0]}:{book[1]}:{book[2]}:{book[3]}:{book[4]}\n")
         else:
